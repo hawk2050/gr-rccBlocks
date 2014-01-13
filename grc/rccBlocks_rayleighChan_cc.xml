@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<block>
+  <name>rayleighChan_cc</name>
+  <key>rccBlocks_rayleighChan_cc</key>
+  <category>rccBlocks</category>
+  <import>import rccBlocks</import>
+  <make>rccBlocks.rayleighChan_cc($seed, $fD, $pwr, $flag_indep)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    	<name>RandomSeed</name>
+	<key>seed</key>
+	<value>randint(-10e3, 0)</value>
+	<type>int</type>
+  </param>
+  
+  <param>
+	<name>Doppler-Bandwidth </name>
+	<key>fD</key>
+	<value>0.0</value>
+	<type>real</type>
+  </param>
+
+  <param>
+	<name>Channel Power</name>
+	<key>pwr</key>
+	<value>1.0</value>
+	<type>real</type>
+  </param>
+	
+  <param>
+	<name>Indep Flag</name>
+	<key>flag_indep</key>
+	<type>bool</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+	<name>in</name>
+	<type>complex</type>
+  </sink>
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+	<name>out</name>
+	<type>complex</type>
+  </source>
+</block>
