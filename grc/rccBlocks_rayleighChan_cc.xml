@@ -4,7 +4,10 @@
   <key>rccBlocks_rayleighChan_cc</key>
   <category>rccBlocks</category>
   <import>import rccBlocks</import>
-  <make>rccBlocks.rayleighChan_cc($seed, $fD, $pwr, $flag_indep)</make>
+  <import>from random import randint</import>
+  <make>rccBlocks.rayleighChan_cc($seed, $fD, $pwr, $flag_indep, $mode)</make>
+  <callback>set_dopplerFreq($fD)</callback>
+  <callback>set_fadeMode($mode)</callback>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
