@@ -79,8 +79,8 @@ namespace gr {
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
     {
-        const Complex *in = (const Complex *) input_items[0];
-        const Complex *out = (const Complex *) output_items[0];
+        Complex *in = (Complex *) input_items[0];
+        Complex *out = (Complex *) output_items[0];
 
         
     		// Performs the channel fading.
