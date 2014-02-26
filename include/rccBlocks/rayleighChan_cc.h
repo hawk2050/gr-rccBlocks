@@ -46,8 +46,9 @@ namespace gr {
        * class. rccBlocks::rayleighChan_cc::make is the public interface for
        * creating new instances.
        */
-      static sptr make(int32_t seed, float fD, float pwr, bool flag_indep);
+      static sptr make(int32_t seed, float fD, float pwr, bool flag_indep, bool mode);
       virtual void set_dopplerFreq(float fD) = 0;
+      virtual void set_fadeMode(bool mode) = 0;
     };
 
   } // namespace rccBlocks
