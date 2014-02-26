@@ -31,10 +31,17 @@
 	<type>real</type>
   </param>
 	
+	<param>
+		<name>Indep Flag</name>
+		<key>flag_indep</key>
+		<type>bool</type>
+	</param>
+
   <param>
-	<name>Indep Flag</name>
-	<key>flag_indep</key>
-	<type>bool</type>
+    <name>Fade Mode</name>
+    <key>mode</key>
+    <value>0</value>
+    <type>bool</type>
   </param>
 
   <!-- Make one 'sink' node per input. Sub-nodes:
