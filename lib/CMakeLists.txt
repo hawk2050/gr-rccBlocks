@@ -32,7 +32,7 @@ list(APPEND rccBlocks_sources
 )
 
 add_library(gnuradio-rccBlocks SHARED ${rccBlocks_sources})
-target_link_libraries(gnuradio-rccBlocks ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+target_link_libraries(gnuradio-rccBlocks ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES} ${GNURADIO_BLOCKS_LIBRARIES})
 set_target_properties(gnuradio-rccBlocks PROPERTIES DEFINE_SYMBOL "gnuradio_rccBlocks_EXPORTS")
 
 ########################################################################
