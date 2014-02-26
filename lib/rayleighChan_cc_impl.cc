@@ -48,8 +48,8 @@ namespace gr {
               gr::io_signature::make(MIN_IN, MAX_IN, sizeof (gr_complex)),
               gr::io_signature::make(MIN_OUT, MAX_OUT, sizeof (gr_complex)))
     {
-      mychan = new flat_rayleigh(seed, fD, pwr, flag_indep);
-      set_dopplerFreq(fD);  
+      mychan = new flat_rayleigh(seed, fd, pwr, flag_indep);
+      set_dopplerFreq(fd);
     }
 
     /*

@@ -43,9 +43,10 @@ class flat_rayleigh
       delete [] buff_f;
       delete [] sinc_matrix;
     }
-  void pass_through(int32_t length, Complex *inp, Complex *outp);
-  void pass_through(int32_t length, Complex *inp, Complex *outp, Complex *csi);
-  void pass_through(int32_t length, Complex *inp, Complex *outp, float *amp_csi);
+  void set_dopplerFreq(float fD);
+  void pass_through(int32_t length, const Complex *inp, Complex *outp);
+  void pass_through(int32_t length, const Complex *inp, Complex *outp, Complex *csi);
+  void pass_through(int32_t length, const Complex *inp, Complex *outp, float *amp_csi);
 };
 
 #endif
