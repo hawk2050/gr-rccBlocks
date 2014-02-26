@@ -34,17 +34,19 @@ namespace gr {
       flat_rayleigh *mychan;
 
      public:
-      rayleighChan_cc_impl(int32_t seed, float fd, float pwr, bool flag_indep);
+      rayleighChan_cc_impl(int32_t seed, float fD, float pwr, bool flag_indep, bool mode);
       ~rayleighChan_cc_impl();
 
       // Where all the action really happens
-      void forecast (int noutput_items, gr_vector_int &ninput_items_required);
+      
+	  virtual void set_dopplerFreq(float fD);
+	  virtual void set_fadeMode(bool mode);
 
-      int general_work(int noutput_items,
-		       gr_vector_int &ninput_items,
+
+      int32_t work(int32_t noutput_items,
 		       gr_vector_const_void_star &input_items,
 		       gr_vector_void_star &output_items);
-      virtual void set_dopplerFreq(float fD);
+      
     };
 
   } // namespace rccBlocks

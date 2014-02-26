@@ -20,6 +20,7 @@ class flat_rayleigh
   int32_t chan_seed;	/* the random channel seed */
   bool IndepFlag;	/* 1 if i.i.d. blocks, 0 if continuous across blocks */
   float PWR;		/* the power of the fading waveform */
+  bool fadeMode; /* Fading is either disabled (0) or enabled (1). If disabled then the input to the block is passed straight through.*/
   Complex chan_val;	/* the flat fading complex coefficient of the channel */
   int32_t K;        /* the number of biquads for my ellipsoid-algorithm design */
   int32_t H, H2;    /* number of interpolating coefs (one sided). H2=2*H */
@@ -32,7 +33,7 @@ class flat_rayleigh
   float *buff_sinc; /* pointer to the pertinent row of the interp. matrix */
   
   public:
-  flat_rayleigh(int32_t seed, float fD, float pwr, bool flag_indep);
+  flat_rayleigh(int32_t seed, float fD, float pwr, bool flag_indep, bool mode);
   ~flat_rayleigh()
     {
       delete [] a;
@@ -43,10 +44,14 @@ class flat_rayleigh
       delete [] buff_f;
       delete [] sinc_matrix;
     }
+
   void set_dopplerFreq(float fD);
-  void pass_through(int32_t length, const Complex *inp, Complex *outp);
-  void pass_through(int32_t length, const Complex *inp, Complex *outp, Complex *csi);
-  void pass_through(int32_t length, const Complex *inp, Complex *outp, float *amp_csi);
+  bool get_fadeMode(void);
+  void set_fadeMode(bool mode);
+  void no_fading(int32_t length, Complex *inp, Complex *outp);
+  void pass_through(int32_t length, Complex *inp, Complex *outp);
+  void pass_through(int32_t length, Complex *inp, Complex *outp, Complex *csi);
+  void pass_through(int32_t length, Complex *inp, Complex *outp, float *amp_csi);
 };
 
 #endif

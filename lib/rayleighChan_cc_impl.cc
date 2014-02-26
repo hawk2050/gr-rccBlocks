@@ -30,9 +30,9 @@ namespace gr {
   namespace rccBlocks {
 
     rayleighChan_cc::sptr
-    rayleighChan_cc::make(int32_t seed, float fd, float pwr, bool flag_indep)
+    rayleighChan_cc::make(int32_t seed, float fD, float pwr, bool flag_indep, bool mode)
     {
-      return gnuradio::get_initial_sptr (new rayleighChan_cc_impl(seed, fd, pwr, flag_indep));
+      return gnuradio::get_initial_sptr (new rayleighChan_cc_impl(seed, fD, pwr, flag_indep, mode));
     }
 
     static const int32_t MIN_IN = 1;  // mininum number of input streams
@@ -43,13 +43,14 @@ namespace gr {
     /*
      * The private constructor
      */
-    rayleighChan_cc_impl::rayleighChan_cc_impl(int32_t seed, float fd, float pwr, bool flag_indep)
+    rayleighChan_cc_impl::rayleighChan_cc_impl(int32_t seed, float fd, float pwr, bool flag_indep, bool mode)
       : gr::block("rayleighChan_cc",
               gr::io_signature::make(MIN_IN, MAX_IN, sizeof (gr_complex)),
               gr::io_signature::make(MIN_OUT, MAX_OUT, sizeof (gr_complex)))
     {
-      mychan = new flat_rayleigh(seed, fd, pwr, flag_indep);
-      set_dopplerFreq(fd);
+      mychan = new flat_rayleigh(seed, fD, pwr, flag_indep);
+      set_dopplerFreq(fD);
+	  set_fadeMode(mode);
     }
 
     /*
@@ -66,28 +67,33 @@ namespace gr {
        mychan->set_dopplerFreq(fD);
     }
 
-    void
-    rayleighChan_cc_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
-    {
-        /* <+forecast+> e.g. ninput_items_required[0] = noutput_items */
-      ninput_items_required[0] = noutput_items;
-    }
+	void rayleighChan_cc_impl::set_fadeMode(bool mode)
+	{
+		mychan->set_fadeMode(mode);
+	}
+
+    
 
     int32_t
-    rayleighChan_cc_impl::general_work (int noutput_items,
-                       gr_vector_int &ninput_items,
+    rayleighChan_cc_impl::work (int32_t noutput_items,
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
     {
-        const gr_complex *in = (const gr_complex *) input_items[0];
-        gr_complex *out = (gr_complex *) output_items[0];
+        const Complex *in = (const Complex *) input_items[0];
+        const Complex *out = (const Complex *) output_items[0];
 
-        // Do <+signal processing+>
-        // Performs the channel fading.
-        mychan->pass_through(noutput_items, in, out);
-        // Tell runtime system how many input items we consumed on
-        // each input stream.
-        consume_each (noutput_items);
+        
+    		// Performs the channel fading.
+    		if (mychan->get_fadeMode() == 0)
+    		{
+    			mychan->no_fading(noutput_items, in, out);
+    		}
+    		else
+    		{
+    			mychan->pass_through(noutput_items, in, out);
+    		}
+    		
+        
 
         // Tell runtime system how many output items we produced.
         return noutput_items;
