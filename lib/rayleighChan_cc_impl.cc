@@ -67,10 +67,10 @@ namespace gr {
        mychan->set_dopplerFreq(fD);
     }
 
-	void rayleighChan_cc_impl::set_fadeMode(bool mode)
-	{
-		mychan->set_fadeMode(mode);
-	}
+  	void rayleighChan_cc_impl::set_fadeMode(bool mode)
+  	{
+  		mychan->set_fadeMode(mode);
+  	}
 
     
 

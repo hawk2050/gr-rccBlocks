@@ -39,9 +39,9 @@ namespace gr {
 
       // Where all the action really happens
       
-	  virtual void set_dopplerFreq(float fD);
-	  virtual void set_fadeMode(bool mode);
-	  virtual bool get_fadeMode(void);
+  	  virtual void set_dopplerFreq(float fD);
+  	  virtual void set_fadeMode(bool mode);
+  	  virtual bool get_fadeMode(void);
 
 
       int32_t work(int32_t noutput_items,
