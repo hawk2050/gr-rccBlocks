@@ -23,7 +23,8 @@
 #define INCLUDED_RCCBLOCKS_RAYLEIGHCHAN_CC_H
 
 #include <rccBlocks/api.h>
-#include <gnuradio/block.h>
+//#include <gnuradio/block.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace rccBlocks {
