@@ -33,7 +33,7 @@ namespace gr {
      * \ingroup rccBlocks
      *
      */
-    class RCCBLOCKS_API rayleighChan_cc : virtual public gr::block
+    class RCCBLOCKS_API rayleighChan_cc : virtual public gr::sync_block
     {
      public:
       typedef boost::shared_ptr<rayleighChan_cc> sptr;

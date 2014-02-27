@@ -44,7 +44,7 @@ namespace gr {
      * The private constructor
      */
     rayleighChan_cc_impl::rayleighChan_cc_impl(int32_t seed, float fD, float pwr, bool flag_indep, bool mode)
-      : gr::block("rayleighChan_cc",
+      : gr::sync_block("rayleighChan_cc",
               gr::io_signature::make(MIN_IN, MAX_IN, sizeof (gr_complex)),
               gr::io_signature::make(MIN_OUT, MAX_OUT, sizeof (gr_complex)))
     {
