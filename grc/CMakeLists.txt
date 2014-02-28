@@ -19,5 +19,6 @@
 
 install(FILES
     rccBlocks_rayleighChan_cc.xml
-    rccBlocks_VNXLabBrick.xml DESTINATION share/gnuradio/grc/blocks
+    rccBlocks_VNXLabBrick.xml
+    rccBlocks_multipath_rayleigh_cc.xml DESTINATION share/gnuradio/grc/blocks
 )

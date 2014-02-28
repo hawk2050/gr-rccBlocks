@@ -46,6 +46,7 @@ from rccBlocks_swig import *
 
 # import any pure python here
 from VNXLabBrick import VNXLabBrick
+from multipath_rayleigh_cc import multipath_rayleigh_cc
 #
 
 # ----------------------------------------------------------------
