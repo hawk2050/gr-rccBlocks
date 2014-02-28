@@ -18,5 +18,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    rccBlocks_rayleighChan_cc.xml DESTINATION share/gnuradio/grc/blocks
+    rccBlocks_rayleighChan_cc.xml
+    rccBlocks_VNXLabBrick.xml DESTINATION share/gnuradio/grc/blocks
 )

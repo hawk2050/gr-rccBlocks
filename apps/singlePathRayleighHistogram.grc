@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Feb 27 20:29:04 2014</timestamp>
+  <timestamp>Fri Feb 28 09:49:40 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,29 +64,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>chan_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>250000</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(10, 170)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>fdTs</value>
     </param>
     <param>
@@ -100,6 +77,29 @@
     <param>
       <key>_coordinate</key>
       <value>(214, 14)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>chan_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>250000</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 170)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -574,6 +574,33 @@
     <param>
       <key>_coordinate</key>
       <value>(677, 150)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>xmlrpc_server</key>
+    <param>
+      <key>id</key>
+      <value>xmlrpc_server_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>addr</key>
+      <value>172.16.54.28</value>
+    </param>
+    <param>
+      <key>port</key>
+      <value>1234</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(791, 62)</value>
     </param>
     <param>
       <key>_rotation</key>

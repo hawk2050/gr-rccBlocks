@@ -45,6 +45,7 @@ if _RTLD_GLOBAL != 0:
 from rccBlocks_swig import *
 
 # import any pure python here
+from VNXLabBrick import VNXLabBrick
 #
 
 # ----------------------------------------------------------------
