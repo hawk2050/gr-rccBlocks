@@ -23,3 +23,12 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../arm_cortex_a8_native.cmake ../
 make
 sudo make install
 sudo ldconfig
+
+Build instructions for ARM Cortex A9 based platforms:
+
+mkdir build
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=../arm_cortex_a9_native.cmake ../
+make
+sudo make install
+sudo ldconfig
