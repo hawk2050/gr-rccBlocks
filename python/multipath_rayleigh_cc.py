@@ -66,46 +66,46 @@ class multipath_rayleigh_cc(gr.hier_block2):
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),  # Input signature
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1)) # Output signature
 
-            ##################################################
-            # Parameters
-            ##################################################
-            self.fD = fD #Doppler Bandwidth = fd*(1.0/chan_rate)
-            self.chan_pwrs = chan_pwrs
-            self.path_delays_samples = path_delays
-            self.chan_seed = seed
-            self.mode = flag_fadeEnable #Enables fading for underlaying single path fading block
+        ##################################################
+        # Parameters
+        ##################################################
+        self.fD = fD #Doppler Bandwidth = fd*(1.0/chan_rate)
+        self.chan_pwrs = chan_pwrs
+        self.path_delays_samples = path_delays
+        self.chan_seed = seed
+        self.mode = flag_fadeEnable #Enables fading for underlaying single path fading block
 
-            # Checks that there is the same number of delays as there are powers.
-            if len(self.chan_pwrs) != len(self.path_delays_us):
-                raise ValueError, "The vector length of chan_pwrs does not match the vector length of path_delays."
-                # Could this be improved?
-                sys.exit(1)
+        # Checks that there is the same number of delays as there are powers.
+        if len(self.chan_pwrs) != len(self.path_delays_us):
+            raise ValueError, "The vector length of chan_pwrs does not match the vector length of path_delays."
+            # Could this be improved?
+            sys.exit(1)
 
-            self.c2f_blks = []      # for list of gr.complex_to_float().
-            self.delay_blks = []    # for list of gr.filter_delay_fc ().
-            self.chan_blks = []     # for list of tait.flat_rayleigh_channel_cc().
+        self.c2f_blks = []      # for list of gr.complex_to_float().
+        self.delay_blks = []    # for list of gr.filter_delay_fc ().
+        self.chan_blks = []     # for list of tait.flat_rayleigh_channel_cc().
 
-            # Normalizes the channel powers if required
-            if flag_norm is True:
-                self.chan_pwrs = 1.0*np.array(chan_pwrs)/np.sqrt((chan_pwrs ** 2).sum(-1))
+        # Normalizes the channel powers if required
+        if flag_norm is True:
+            self.chan_pwrs = 1.0*np.array(chan_pwrs)/np.sqrt((chan_pwrs ** 2).sum(-1))
 
-            # Populate the lists above with the correct number of blocks.
-            for i in range (len(self.path_delays_samples)):
-                print "create delay block %d" %(i)
+        # Populate the lists above with the correct number of blocks.
+        for i in range (len(self.path_delays_samples)):
+            print "create delay block %d" %(i)
+            
+            # Delay block is required.
+            self.delay_blks.append(gr.delay(gr.sizeof_gr_complex*1, int(self.path_delays_samples[i])))
                 
-                # Delay block is required.
-                self.delay_blks.append(gr.delay(gr.sizeof_gr_complex*1, int(self.path_delays_samples[i])))
-                    
-                self.chan_blks.append(rccBlocks.rayleighChan_cc(chan_seed + i, self.fD, self.chan_pwrs[i], flag_indep,self.mode))
+            self.chan_blks.append(rccBlocks.rayleighChan_cc(chan_seed + i, self.fD, self.chan_pwrs[i], flag_indep,self.mode))
 
-            self.sum = gr.add_vcc(1)  
+        self.sum = gr.add_vcc(1)  
 
-            # Create multiple instances of the "src -> delay -> channel" connection.
-            for i in range (len(self.chan_blks)):
-                print i
-                self.connect( (self,0), (self.chan_blks[i],0) )
-                self.connect( (self.chan_blks[i],0), (self.delay_blks[i],0) )
-                self.connect( (self.delay_blks[i],0), (self.sum, i) )
+        # Create multiple instances of the "src -> delay -> channel" connection.
+        for i in range (len(self.chan_blks)):
+            print i
+            self.connect( (self,0), (self.chan_blks[i],0) )
+            self.connect( (self.chan_blks[i],0), (self.delay_blks[i],0) )
+            self.connect( (self.delay_blks[i],0), (self.sum, i) )
         #self.connect( (self,0), (self.chan_blks[0],0) )
         #self.connect( (self.chan_blks[0],0), (self.delay_blks[0],0) )
         #self.connect( (self.delay_blks[0],0), (self, 0) )  
