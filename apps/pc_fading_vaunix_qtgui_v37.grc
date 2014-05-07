@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Apr 14 18:02:27 2014</timestamp>
+  <timestamp>Tue May  6 20:11:46 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,7 +64,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>usrpRate</value>
+      <value>fdTs</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -72,34 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>250e3</value>
+      <value>fd*(1.0/usrpRate)</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 170)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>baseband_multiplier</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0.25</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(195, 12)</value>
+      <value>(217, 81)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -133,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>fdTs</value>
+      <value>baseband_multiplier</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -141,11 +118,34 @@
     </param>
     <param>
       <key>value</key>
-      <value>fd*(1.0/usrpRate)</value>
+      <value>0.25</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(217, 81)</value>
+      <value>(195, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>usrpRate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>250e3</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 170)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -824,26 +824,34 @@
     </param>
   </block>
   <block>
-    <key>xmlrpc_server</key>
+    <key>variable_qtgui_entry</key>
     <param>
       <key>id</key>
-      <value>xmlrpc_server_0</value>
+      <value>fd</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>addr</key>
-      <value>0.0.0.0</value>
+      <key>label</key>
+      <value>Doppler Rate, Hz</value>
     </param>
     <param>
-      <key>port</key>
-      <value>1234</value>
+      <key>type</key>
+      <value>real</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>50</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(818, 153)</value>
+      <value>(645, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -894,183 +902,26 @@
     </param>
   </block>
   <block>
-    <key>variable_qtgui_entry</key>
+    <key>xmlrpc_server</key>
     <param>
       <key>id</key>
-      <value>fd</value>
+      <value>xmlrpc_server_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>Doppler Rate, Hz</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>real</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>50</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(645, 12)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_qtgui_range</key>
-    <param>
-      <key>id</key>
-      <value>atten</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>RF Attenuator Setting, dB</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>start</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>stop</key>
-      <value>63</value>
-    </param>
-    <param>
-      <key>step</key>
-      <value>0.5</value>
-    </param>
-    <param>
-      <key>widget</key>
-      <value>counter_slider</value>
-    </param>
-    <param>
-      <key>orient</key>
-      <value>Qt.Horizontal</value>
-    </param>
-    <param>
-      <key>min_len</key>
-      <value>200</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(790, 10)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>rccBlocks_rayleighChan_cc</key>
-    <param>
-      <key>id</key>
-      <value>rccBlocks_rayleighChan_cc_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>seed</key>
-      <value>randint(-10e3, 0)</value>
-    </param>
-    <param>
-      <key>fD</key>
-      <value>0.0</value>
-    </param>
-    <param>
-      <key>pwr</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>flag_indep</key>
       <value>False</value>
     </param>
     <param>
-      <key>mode</key>
-      <value>bool(fadeMode)</value>
+      <key>addr</key>
+      <value>0.0.0.0</value>
     </param>
     <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
+      <key>port</key>
+      <value>1234</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(359, 348)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_multiply_const_vxx</key>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_const_vxx_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>const</key>
-      <value>baseband_multiplier</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 376)</value>
+      <value>(818, 153)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1085,7 +936,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>type</key>
@@ -1124,7 +975,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>type</key>
@@ -1171,7 +1022,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>atten</key>
@@ -1229,6 +1080,206 @@
       <value>0</value>
     </param>
   </block>
+  <block>
+    <key>blocks_multiply_const_vxx</key>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_const_vxx_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>baseband_multiplier</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(600, 376)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_qtgui_range</key>
+    <param>
+      <key>id</key>
+      <value>atten</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>RF Attenuator Setting, dB</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>start</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>stop</key>
+      <value>63</value>
+    </param>
+    <param>
+      <key>step</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>widget</key>
+      <value>counter_slider</value>
+    </param>
+    <param>
+      <key>orient</key>
+      <value>Qt.Horizontal</value>
+    </param>
+    <param>
+      <key>min_len</key>
+      <value>200</value>
+    </param>
+    <param>
+      <key>gui_hint</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(790, 10)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>rccBlocks_rayleighChan_cc</key>
+    <param>
+      <key>id</key>
+      <value>rccBlocks_rayleighChan_cc_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>seed</key>
+      <value>randint(-10e3, 0)</value>
+    </param>
+    <param>
+      <key>fD</key>
+      <value>200e-6</value>
+    </param>
+    <param>
+      <key>pwr</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>flag_indep</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>mode</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(347, 478)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>rccBlocks_rayleighChan_cc</key>
+    <param>
+      <key>id</key>
+      <value>rccBlocks_rayleighChan_cc_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>seed</key>
+      <value>randint(-10e3, 0)</value>
+    </param>
+    <param>
+      <key>fD</key>
+      <value>fdTs</value>
+    </param>
+    <param>
+      <key>pwr</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>flag_indep</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>mode</key>
+      <value>bool(fadeMode)</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(359, 348)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
     <sink_block_id>uhd_usrp_sink_0_0_0</sink_block_id>
@@ -1255,6 +1306,18 @@
   </connection>
   <connection>
     <source_block_id>rccBlocks_rayleighChan_cc_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>analog_const_source_x_0</source_block_id>
+    <sink_block_id>rccBlocks_rayleighChan_cc_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rccBlocks_rayleighChan_cc_0_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

@@ -39,7 +39,7 @@ class VNXLabBrick(gr.sync_block):
 
 
     def work(self, input_items, output_items):
-        inum_input_items = len(input_items[0])
+        num_input_items = len(input_items[0])
         in0 = input_items[0]
         return num_input_items
 
