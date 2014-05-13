@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <inttypes.h>
+#include <mutex>
 #include "complex.h"
 
 using namespace std;
@@ -31,6 +32,7 @@ class flat_rayleigh
   Complex **st;    /* state of the K biquads */
   Complex *buff_f; /* the rarely sampled output of the 0.2-Doppler prototype */
   float *buff_sinc; /* pointer to the pertinent row of the interp. matrix */
+  std::mutex doppler_lock;
   
   public:
   flat_rayleigh(int32_t seed, float fD, float pwr, bool flag_indep, bool mode);

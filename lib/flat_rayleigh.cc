@@ -43,7 +43,8 @@ bool flat_rayleigh::get_fadeMode(void)
 
 void flat_rayleigh::set_dopplerFreq(float fD)
 {
-	if (fD > 0.2)
+	doppler_lock.lock();
+  if (fD > 0.2)
 	{
 	    cout << "Warning: Discrete Doppler fDT > 0.2, handled as fDT=0.2 exactly" << endl;
 	    I = 1;
@@ -142,7 +143,7 @@ void flat_rayleigh::set_dopplerFreq(float fD)
 	// stop here, no need to interpolate, since idle run
   }
 	
-  
+  doppler_lock.unlock();
 
 }
 
@@ -161,6 +162,7 @@ void flat_rayleigh::no_fading(int32_t length, Complex *inp, Complex *outp)
 void flat_rayleigh::pass_through(int32_t length, Complex *inp, Complex *outp)
 {
   register int32_t k, j, t;
+  doppler_lock.lock();
 
   if (IndepFlag) {
 	  chan_seed += 1;	// reset the seed
@@ -222,6 +224,7 @@ void flat_rayleigh::pass_through(int32_t length, Complex *inp, Complex *outp)
       chan_val += buff_f[(IP + j) % H2] * buff_sinc[j];
     outp[t] = inp[t] * chan_val;
   }
+  doppler_lock.unlock();
 }
 
 
@@ -231,6 +234,7 @@ void flat_rayleigh::pass_through(int32_t length, Complex *inp,
                                     Complex *outp, Complex *csi)
 {
   register int32_t k, j, t;
+  doppler_lock.lock();
 
   if (IndepFlag) {
 	  chan_seed += 1;	// reset the seed
@@ -292,6 +296,7 @@ void flat_rayleigh::pass_through(int32_t length, Complex *inp,
     csi[t] = chan_val;
     outp[t] = inp[t] * chan_val;
   }
+  doppler_lock.unlock();
 }
 
 
@@ -301,6 +306,8 @@ void flat_rayleigh::pass_through(int32_t length, Complex *inp,
                                  Complex *outp, float *amp_csi)
 {
   register int32_t k, j, t;
+
+  doppler_lock.lock();
 
   if (IndepFlag) {
 	  chan_seed += 1;	// reset the seed
@@ -362,6 +369,8 @@ void flat_rayleigh::pass_through(int32_t length, Complex *inp,
     amp_csi[t] = sqrt(abs(chan_val));
     outp[t] = inp[t] * chan_val;
   }
+
+  doppler_lock.unlock();
 }
     
     
