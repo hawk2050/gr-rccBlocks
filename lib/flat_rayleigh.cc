@@ -1,5 +1,6 @@
 /*****************************************************************************
- * Author: Christos Komninakis                                               *
+ * Original Author: Christos Komninakis                                      *
+ * Modifications: for GNU Radio by Richard Clarke
  * Date: January 4, 2000.                                                    *
  * Content: C++ code file for the CLASS "flat_rayleigh".                     *
  *****************************************************************************/
